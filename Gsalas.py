@@ -4,7 +4,7 @@ from tkinter import ttk
 import tkinter.messagebox as tkMsgbox
 import sqlite3
 
-class salas(tk.Toplevel):
+class Salas(tk.Toplevel):
     def __init__(self, master = None):
         super().__init__(master)
         self.master = master

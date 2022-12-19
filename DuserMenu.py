@@ -2,7 +2,7 @@ import tkinter as tk
 import tkinter.font as tkFont
 
 
-class usermenu(tk.Toplevel):
+class Usermenu(tk.Toplevel):
     def __init__(self, master = None):
         super().__init__(master)
         self.master = master

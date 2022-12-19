@@ -6,7 +6,7 @@ import sqlite3
 #from command import command_a
 
 
-class account(tk.Toplevel):
+class Account(tk.Toplevel):
     def __init__(self,master = None):
         super().__init__(master)
         

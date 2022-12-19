@@ -2,7 +2,7 @@ import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgbox
 from tkinter import ttk
-from command import command_a
+from command import Command_a
 import sqlite3
 import tkinter as tk
 import tkinter.font as tkFont

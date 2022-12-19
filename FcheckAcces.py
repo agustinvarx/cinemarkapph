@@ -1,6 +1,6 @@
 import tkinter as tk
 import tkinter.font as tkFont
-from Eadmin import adminmenu
+from Eadmin import Adminmenu
 import tkinter.messagebox as tkMsgbox
 class Acces(tk.Toplevel):
     def __init__(self,master = None):
@@ -78,7 +78,7 @@ class Acces(tk.Toplevel):
         password = "cinemark2022"
         c_password = self.get_value("clave")
         if c_password == password:
-            adminmenu(self.root)
+            Adminmenu(self.root)
         else:
             tkMsgbox.showerror(self.title(),"Contraseña incorrecta!")
         print("acces")

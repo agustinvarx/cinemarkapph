@@ -2,12 +2,12 @@ import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgbox
 from tkinter import ttk
-from Caccount import account
-from DuserMenu import usermenu
+from Caccount import Account
+from DuserMenu import Usermenu
 from FcheckAcces import Acces
-from command import command_a
+from command import Command_a
 
-class login(tk.Toplevel):
+class Login(tk.Toplevel):
     def __init__(self,master = None):
         super().__init__(master)
         #setting title
@@ -116,17 +116,17 @@ class login(tk.Toplevel):
     def command_login(self):
       username = self.get_value("user")
       password = self.get_value("password")
-      open = command_a.command_iniciarsesion(username,password)
+      open = Command_a.command_iniciarsesion(username,password)
       print(open,"test")
       if open == "cliente":
-        usermenu(self.root)
+        Usermenu(self.root)
       elif open == "Cinemark Team":
         Acces(self.root)
       else:
         tkMsgbox.showerror(self.title(),"El usuario o contraseña son incorrectos!")
 
     def command_inicio(self):
-      account(self.root)
+      Account(self.root)
 
 
     def command_salir(self):

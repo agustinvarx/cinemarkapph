@@ -2,7 +2,7 @@ import sqlite3
 
 database = "usuarios.db"
 
-class command_a:
+class Command_a:
 
   @staticmethod
   def command_iniciarsesion(var_a,var_p):

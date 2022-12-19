@@ -1,8 +1,9 @@
 import tkinter as tk
 import tkinter.font as tkFont
-from Gsalas import salas
+from Gsalas import Salas
 from HsetSalas import Set_salas
-class adminmenu(tk.Toplevel):
+
+class Adminmenu(tk.Toplevel):
     def __init__(self,master = None):
         super().__init__(master)
         self.root = master
@@ -102,7 +103,7 @@ class adminmenu(tk.Toplevel):
 
 
     def command_sala(self):
-        salas(self.root)
+        Salas(self.root)
         print("sala")
 
 
