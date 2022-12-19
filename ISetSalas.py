@@ -7,7 +7,7 @@ import sqlite3
 import tkinter as tk
 import tkinter.font as tkFont
 
-lista =command_a.command_salas()
+lista =[]
 
 class Set_salas(tk.Toplevel):
     def __init__(self,master = None):

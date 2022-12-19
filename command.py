@@ -24,7 +24,7 @@ class command_a:
           open = "Cinemark Team"
       return open  
 
-  @staticmethod
+  """@staticmethod
   def command_salas():
       lista = []
       conexion = sqlite3.connect("CinemarkSalas.db")
@@ -35,9 +35,8 @@ class command_a:
       conexion.close()
       for iter in datos:
         lista.append(iter[1])
-
       print(lista)
-      return lista
+      return lista"""
 
   @staticmethod
   def update_nombre(var):
