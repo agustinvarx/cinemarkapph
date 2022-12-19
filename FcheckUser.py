@@ -3,10 +3,10 @@ import tkinter.font as tkFont
 from Eadmin import adminmenu
 import tkinter.messagebox as tkMsgbox
 class Acces(tk.Toplevel):
-    def __init__(self,root,master = None):
+    def __init__(self,master = None):
         super().__init__(master)
         self.master = master
-        self.root = root
+        self.root = master
         #setting title
         self.title("Cinemark")
         #setting window size
@@ -22,18 +22,18 @@ class Acces(tk.Toplevel):
         eqtiqueta["bg"] = "#f2f2f2"
         ft = tkFont.Font(family='calibri bold',size=14)
         eqtiqueta["font"] = ft
-        eqtiqueta["fg"] = "#333333"
+        eqtiqueta["fg"] = "#009688"
         eqtiqueta["justify"] = "center"
         eqtiqueta["text"] = "Cinemark App"
         eqtiqueta.place(x=80,y=10,width=211,height=35)
 
         eqtiqueta1=tk.Label(self)
-        eqtiqueta1["bg"] = "#f2f2f2"
+        eqtiqueta1["bg"] = "#009688"
         ft = tkFont.Font(family='calibri bold',size=12)
         eqtiqueta1["font"] = ft
-        eqtiqueta1["fg"] = "#393d49"
+        eqtiqueta1["fg"] = "#ffffff"
         eqtiqueta1["justify"] = "center"
-        eqtiqueta1["text"] = "codigo de acceso"
+        eqtiqueta1["text"] = "clave de acceso"
         eqtiqueta1.place(x=20,y=70,width=120,height=30)
 
         entry_password=tk.Entry(self,name="clave",show="*")
@@ -45,22 +45,24 @@ class Acces(tk.Toplevel):
         entry_password.place(x=160,y=70,width=191,height=30)
 
         btn_cancelar=tk.Button(self)
-        btn_cancelar["bg"] = "#f0f0f0"
+        btn_cancelar["bg"] = "#d45858"
         ft = tkFont.Font(family='calibri bold',size=12)
         btn_cancelar["font"] = ft
-        btn_cancelar["fg"] = "#000000"
+        btn_cancelar["fg"] = "#ffffff"
         btn_cancelar["justify"] = "center"
         btn_cancelar["text"] = "cancelar"
+        btn_cancelar["relief"] = "flat"
         btn_cancelar.place(x=20,y=140,width=153,height=30)
         btn_cancelar["command"] = self.command_cancelar
 
         btn_acces=tk.Button(self)
-        btn_acces["bg"] = "#f0f0f0"
+        btn_acces["bg"] = "#009688"
         ft = tkFont.Font(family='calibri bold',size=12)
         btn_acces["font"] = ft
-        btn_acces["fg"] = "#000000"
+        btn_acces["fg"] = "#ffffff"
         btn_acces["justify"] = "center"
         btn_acces["text"] = "entrar"
+        btn_acces["relief"] = "flat"
         btn_acces.place(x=200,y=140,width=152,height=30)
         btn_acces["command"] = self.command_acces
 

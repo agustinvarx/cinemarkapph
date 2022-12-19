@@ -1,11 +1,12 @@
 import tkinter as tk
 import tkinter.font as tkFont
 
+
 class usermenu(tk.Toplevel):
-    def __init__(self,root, master = None):
+    def __init__(self, master = None):
         super().__init__(master)
         self.master = master
-        self,root = root
+        self.root = master
         #setting title
         self.title("Cinemark")
         #setting window size
@@ -100,3 +101,13 @@ class usermenu(tk.Toplevel):
 
     def command_mostrar(self):
         print("ver reservas")
+
+
+    def command_historial(self):
+        print("historial")
+
+
+    def command_exit(self):
+        self.destroy()
+        print("salir")
+      

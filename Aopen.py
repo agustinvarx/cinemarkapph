@@ -9,8 +9,8 @@ class App:
         #setting title
         root.title(title)
         #setting window size
-        width=483
-        height=156
+        width=373
+        height=130
         screenwidth = root.winfo_screenwidth()
         screenheight = root.winfo_screenheight()
         alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
@@ -20,32 +20,34 @@ class App:
 
         etiqueta=tk.Label(root)
         etiqueta["bg"] = "#f2f2f2"
-        ft = tkFont.Font(family='calibri bold',size=14)
+        ft = tkFont.Font(family='calibri bold',size=16)
         etiqueta["font"] = ft
-        etiqueta["fg"] = "#393d49"
+        etiqueta["fg"] = "#009688"
         etiqueta["justify"] = "center"
         etiqueta["text"] = "Cinemark App"
         etiqueta["relief"] = "flat"
-        etiqueta.place(x=120,y=10,width=237,height=30)
+        etiqueta.place(x=80,y=10,width=201,height=30)
 
         btn_open=tk.Button(root)
-        btn_open["bg"] = "#f2f2f2"
-        ft = tkFont.Font(family='Times',size=10)
-        btn_open["font"] = ("calibri",12,"bold")
-        btn_open["fg"] = "#000000"
+        btn_open["bg"] = "#009688"
+        ft = tkFont.Font(family='calibri bold',size=12)
+        btn_open["font"] = ft
+        btn_open["fg"] = "#ffffff"
         btn_open["justify"] = "center"
         btn_open["text"] = "iniciar"
-        btn_open.place(x=70,y=80,width=157,height=30)
+        btn_open["relief"] = "flat"
+        btn_open.place(x=20,y=80,width=157,height=30)
         btn_open["command"] = self.open_app
 
         btn_close=tk.Button(root)
-        btn_close["bg"] = "#f2f2f2"
+        btn_close["bg"] = "#d45858"
         ft = tkFont.Font(family='Times',size=10)
         btn_close["font"] = ("calibri",12,"bold")
-        btn_close["fg"] = "#000000"
+        btn_close["fg"] = "#ffffff"
         btn_close["justify"] = "center"
         btn_close["text"] = "cancelar"
-        btn_close.place(x=250,y=80,width=152,height=30)
+        btn_close["relief"] = "flat"
+        btn_close.place(x=200,y=80,width=152,height=30)
         btn_close["command"] = self.close_app
 
     def open_app(self):
