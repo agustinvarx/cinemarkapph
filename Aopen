@@ -1,6 +1,6 @@
 import tkinter as tk
 import tkinter.font as tkFont
-from Clogin import login
+from Blogin import login
 
 
 class App:

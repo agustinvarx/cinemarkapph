@@ -1,7 +1,7 @@
 import tkinter as tk
 import tkinter.font as tkFont
-from Hsalas import salas
-from IsetSalas import Set_salas
+from Gsalas import salas
+from HsetSalas import Set_salas
 class adminmenu(tk.Toplevel):
     def __init__(self,master = None):
         super().__init__(master)
