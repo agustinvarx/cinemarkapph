@@ -2,10 +2,10 @@ import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgbox
 from tkinter import ttk
-from Caccount import account
-from DuserMenu import usermenu
-from FcheckUser import Acces
-from Wcommand import command_a
+from Daccount import account
+from EuserMenu import usermenu
+from GcheckAcces import Acces
+from command import command_a
 
 class login(tk.Toplevel):
     def __init__(self,master = None):

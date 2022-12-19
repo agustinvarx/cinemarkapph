@@ -2,7 +2,7 @@ import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgbox
 from tkinter import ttk
-from Zcommand import command_a
+from command import command_a
 import sqlite3
 import tkinter as tk
 import tkinter.font as tkFont
@@ -209,7 +209,7 @@ class Set_salas(tk.Toplevel):
         conexion = sqlite3.connect("CinemarkSalas.db")
         cursor = conexion.cursor()
         cursor.execute("SELECT * FROM SALAS NOMBRE")
-        datos = cursor.fetchall()
+        datos = cursor.fetchall() 
         conexion.commit()
         conexion.close()
         for iter in datos:

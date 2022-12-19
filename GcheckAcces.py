@@ -1,6 +1,6 @@
 import tkinter as tk
 import tkinter.font as tkFont
-from Eadmin import adminmenu
+from Fadmin import adminmenu
 import tkinter.messagebox as tkMsgbox
 class Acces(tk.Toplevel):
     def __init__(self,master = None):
