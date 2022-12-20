@@ -1,13 +1,13 @@
 import sqlite3
 
-database = "usuarios.db"
+database = "cinemark.db"
 
 class Command_a:
 
   @staticmethod
   def command_iniciarsesion(var_a,var_p):
 
-      conexion = sqlite3.connect("usuariostest.db")
+      conexion = sqlite3.connect("cinemark.db")
       cursor = conexion.cursor()
       cursor.execute("SELECT * FROM USUARIOS USERNAME")
       datos = cursor.fetchall()
@@ -40,7 +40,7 @@ class Command_a:
 
   @staticmethod
   def update_nombre(var):
-      conexion = sqlite3.connect("CinemarkSalas.db")
+      conexion = sqlite3.connect("cinemark.db")
       cursor = conexion.cursor()
       cursor.execute("UPDATE SALAS SET NOMBRE(?) WHERE")
       conexion.commit()

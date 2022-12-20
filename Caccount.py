@@ -216,7 +216,7 @@ class Account(tk.Toplevel):
             try:
                 if len(password) >= 8:
                     if password == password_Conf and roles_get == "cliente":
-                        conexion = sqlite3.connect("usuariostest.db")
+                        conexion = sqlite3.connect("cinemark.db")
                         cursor = conexion.cursor()
                         cursor.execute("""CREATE TABLE IF NOt EXISTS 'USUARIOS'
                                         (ID INTEGER PRIMARY KEY AUTOINCREMENT,

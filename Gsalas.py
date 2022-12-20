@@ -130,7 +130,7 @@ class Salas(tk.Toplevel):
         if salas == "" or peliculas == "" or dimension == "":
           tkMsgbox.showwarning(self.title(),"Todos los campos deben estar completos!")
         else:
-          conexion = sqlite3.connect("CinemarkSalas.db")
+          conexion = sqlite3.connect("cinemark.db")
           cursor = conexion.cursor()
           cursor.execute("""CREATE TABLE IF NOT EXISTS 'SALAS'
                             (ID INTEGER PRIMARY KEY AUTOINCREMENT,
