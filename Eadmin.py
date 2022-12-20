@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.font as tkFont
 from Gsalas import Salas
 from HsetSalas import Set_salas
+from tabla import Ventana
 
 class Adminmenu(tk.Toplevel):
     def __init__(self,master = None):
@@ -95,6 +96,7 @@ class Adminmenu(tk.Toplevel):
         btn_exit["command"] = self.command_exit
 
     def command_ver_reservas(self):
+        Ventana(self.root)
         print("ver reservas")
 
 

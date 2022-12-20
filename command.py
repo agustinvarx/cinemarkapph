@@ -45,3 +45,30 @@ class Command_a:
       cursor.execute("UPDATE SALAS SET NOMBRE(?) WHERE")
       conexion.commit()
       conexion.close()  
+
+  @staticmethod
+  def lista_sala():
+      conexion = sqlite3.connect("cinemark.db")
+      cursor = conexion.cursor()
+      cursor.execute("SELECT u.ID, u.NOMBRE, u.CAPACIDAD, u.PElICULA, u.FORMATO FROM SALAS u")
+      lista = cursor.fetchall()
+      conexion.commit()
+      conexion.close()
+      print(lista)  
+      return lista
+
+
+
+
+
+
+"""
+      conexion = sqlite3.connect("cinemark.db")
+      cursor = conexion.cursor()
+      cursor.execute("SELECT * FROM SALAS")
+      lista = cursor.fetchall()
+      conexion.commit()
+      conexion.close()
+      for i in lista:
+        print(i)
+      return lista"""

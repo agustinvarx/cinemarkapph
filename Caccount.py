@@ -237,7 +237,7 @@ class Account(tk.Toplevel):
                     else:
                         if password == password_Conf and roles_get == "Cinemark Team":
                             tkMsgbox.showwarning(self.title(),"Si formas parte del equipo Cinemaek se te habra otorgado una clave unica para acceder a las tareas de administracion. En caso contrario no podras acceder")
-                            conexion = sqlite3.connect("usuariostest.db")
+                            conexion = sqlite3.connect("cinemark.db")
                             cursor = conexion.cursor()
                             cursor.execute("""CREATE TABLE IF NOt EXISTS 'USUARIOS'
                                         (ID INTEGER PRIMARY KEY AUTOINCREMENT,
