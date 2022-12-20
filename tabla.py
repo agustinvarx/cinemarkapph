@@ -61,8 +61,7 @@ class Ventana(tk.Toplevel):
         tablas.delete(iter)
       salas = Command_a.lista_sala()
       for iter in salas:
-        a = 0
-        tablas.insert("",END,text=[0],values=(salas[0][0],salas[1][1],salas[2][2]))
-        a += 1
-
+        a=0
+        tablas.insert("",END,text=salas[0][0],values=(salas[1][1],salas[2][2]))
+        a+=1
 
