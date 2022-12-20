@@ -2,16 +2,26 @@ import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgbox
 from tkinter import ttk
-from command import Command_a
+#from command import Command_a
 import sqlite3
 import tkinter as tk
 import tkinter.font as tkFont
 
-lista =[]
+
+lista = []
+conexion = sqlite3.connect("cinemark.db")
+cursor = conexion.cursor()
+cursor.execute("SELECT * FROM SALAS NOMBRE")
+datos = cursor.fetchall() 
+conexion.commit()
+conexion.close()
+for iter in datos:
+    lista.append(iter[1])
 
 class Set_salas(tk.Toplevel):
     def __init__(self,master = None):
         super().__init__(master)
+        self.root = master
         self.master = master
         #setting title
         self.title("undefined")
@@ -159,7 +169,7 @@ class Set_salas(tk.Toplevel):
         formato = self.get_value("formato")
         pelicula = self.get_value("pelicula")
 
-        conexion = sqlite3.connect("CinemarkSalas.db")
+        conexion = sqlite3.connect("cinemark.db")
         cursor = conexion.cursor()
         cursor.execute("SELECT * FROM SALAS NOMBRE")
         datos = cursor.fetchall()
@@ -170,7 +180,7 @@ class Set_salas(tk.Toplevel):
             if iter[1] == sala:
                 if nombre != "":
                     lista_set = [nombre,sala]
-                    conexion = sqlite3.connect("CinemarkSalas.db")
+                    conexion = sqlite3.connect("cinemark.db")
                     cursor = conexion.cursor()
                     cursor.execute("UPDATE SALAS SET NOMBRE = (?) WHERE NOMBRE =(?)",lista_set)
                     conexion.commit()
@@ -178,21 +188,21 @@ class Set_salas(tk.Toplevel):
                     #pass
                 if capacidad != "":
                     set_lista= [capacidad,nombre]
-                    conexion = sqlite3.connect("CinemarkSalas.db")
+                    conexion = sqlite3.connect("cinemark.db")
                     cursor = conexion.cursor()
                     cursor.execute("UPDATE SALAS SET CAPACIDAD = (?) WHERE NOMBRE =(?)",set_lista)
                     conexion.commit()
                     conexion.close()
                 if pelicula != "":
                     set_lista= [pelicula,nombre]
-                    conexion = sqlite3.connect("CinemarkSalas.db")
+                    conexion = sqlite3.connect("cinemark.db")
                     cursor = conexion.cursor()
                     cursor.execute("UPDATE SALAS SET PELICULA = (?) WHERE NOMBRE =(?)",set_lista)
                     conexion.commit()
                     conexion.close()
                 if pelicula != "":
                     set_format= [formato,nombre]
-                    conexion = sqlite3.connect("CinemarkSalas.db")
+                    conexion = sqlite3.connect("cinemark.db")
                     cursor = conexion.cursor()
                     cursor.execute("UPDATE SALAS SET FORMATO = (?) WHERE NOMBRE =(?)",set_format)
                     conexion.commit()
@@ -205,8 +215,8 @@ class Set_salas(tk.Toplevel):
     def command_delete(self):
 
         sala = self.get_value("sala")
-
-        conexion = sqlite3.connect("CinemarkSalas.db")
+        tkMsgbox.askokcancel(self.master.master.title(),"Se eliminara un sala desea continuar?")
+        conexion = sqlite3.connect("cinemark.db")
         cursor = conexion.cursor()
         cursor.execute("SELECT * FROM SALAS NOMBRE")
         datos = cursor.fetchall() 
@@ -215,7 +225,7 @@ class Set_salas(tk.Toplevel):
         for iter in datos:
             if iter[1] == sala:
                 lista_set = [sala]
-                conexion = sqlite3.connect("CinemarkSalas.db")
+                conexion = sqlite3.connect("cinemark.db")
                 cursor = conexion.cursor()
                 cursor.execute("DELETE FROM SALAS WHERE NOMBRE = (?)",lista_set)
                 conexion.commit()

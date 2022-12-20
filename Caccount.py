@@ -236,10 +236,11 @@ class Account(tk.Toplevel):
                     
                     else:
                         if password == password_Conf and roles_get == "Cinemark Team":
-                            tkMsgbox.showwarning(self.title(),"Si formas parte del equipo Cinemaek se te habra otorgado una clave unica para acceder a las tareas de administracion. En caso contrario no podras acceder")
-                            conexion = sqlite3.connect("cinemark.db")
-                            cursor = conexion.cursor()
-                            cursor.execute("""CREATE TABLE IF NOt EXISTS 'USUARIOS'
+                            answer = tkMsgbox.askokcancel(self.title(),"Si formas parte del equipo Cinemaek se te habra otorgado una clave unica para acceder a las tareas de administracion. En caso contrario no podras acceder")
+                            if answer:
+                                conexion = sqlite3.connect("cinemark.db")
+                                cursor = conexion.cursor()
+                                cursor.execute("""CREATE TABLE IF NOt EXISTS 'USUARIOS'
                                         (ID INTEGER PRIMARY KEY AUTOINCREMENT,
                                         NOMBRE VARCHAR(50),
                                         APELLIDO VARCHAR(50),
@@ -249,11 +250,11 @@ class Account(tk.Toplevel):
                                         PASSWORDS VARCHAR(20),
                                         ROLES VARCHAR(20))""")
 
-                            lista = [(nombre,apellido,dni,user,email,password,roles_get)]
-                            cursor.executemany("INSERT INTO USUARIOS VALUES (NULL,?,?,?,?,?,?,?)",lista)
-                            conexion.commit()
-                            conexion.close()
-                            tkMsgbox.showinfo(self.title(),"Registro existoso!")
+                                lista = [(nombre,apellido,dni,user,email,password,roles_get)]
+                                cursor.executemany("INSERT INTO USUARIOS VALUES (NULL,?,?,?,?,?,?,?)",lista)
+                                conexion.commit()
+                                conexion.close()
+                                tkMsgbox.showinfo(self.title(),"Registro existoso!")
 
                 else:
                     tkMsgbox.showwarning(self.title(),"La ncontraseña no debe ser menor a 8 caracteres!")                            

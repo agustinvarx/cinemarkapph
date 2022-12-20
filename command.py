@@ -24,22 +24,8 @@ class Command_a:
           open = "Cinemark Team"
       return open  
 
-  """@staticmethod
-  def command_salas():
-      lista = []
-      conexion = sqlite3.connect("CinemarkSalas.db")
-      cursor = conexion.cursor()
-      cursor.execute("SELECT * FROM SALAS NOMBRE")
-      datos = cursor.fetchall()
-      conexion.commit()
-      conexion.close()
-      for iter in datos:
-        lista.append(iter[1])
-      print(lista)
-      return lista"""
-
   @staticmethod
-  def update_nombre(var):
+  def update_nombre():
       conexion = sqlite3.connect("cinemark.db")
       cursor = conexion.cursor()
       cursor.execute("UPDATE SALAS SET NOMBRE(?) WHERE")

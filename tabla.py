@@ -3,10 +3,14 @@ from tkinter import *
 import tkinter.font as tkFont
 from tkinter import ttk
 from command import Command_a
+import sqlite3
+import tkinter.messagebox as tkMsgbox
+from HsetSalas import Set_salas
 
 class Ventana(tk.Toplevel):
     def __init__(self, master = None):
         super().__init__(master)
+        self.root = master
         self.master= master
         #setting title
         self.title("undefined")
@@ -34,16 +38,31 @@ class Ventana(tk.Toplevel):
         vista.place(x=20,y=20,width=710,height=325)
         self.refresh()
 
-        btn_close=tk.Button(self)
-        btn_close["bg"] = "#d45858"
+        btn_editar=tk.Button(self)
+        btn_editar["bg"] = "#d45858"
         ft = tkFont.Font(family='calibri bold',size=12)
-        btn_close["font"] = ft
-        btn_close["fg"] = "#ffffff"
-        btn_close["justify"] = "center"
-        btn_close["text"] = "cancelar"
-        btn_close["relief"] = "flat"
-        btn_close.place(x=200,y=400,width=152,height=30)
-        btn_close["command"] = self.obtener_fila
+        btn_editar["font"] = ft
+        btn_editar["fg"] = "#ffffff"
+        btn_editar["justify"] = "center"
+        btn_editar["text"] = "Eliminar sala"
+        btn_editar["relief"] = "flat"
+        btn_editar.place(x=440,y=400,width=139,height=30)
+        btn_editar["command"] = self.command_update
+
+
+        btn_delete=tk.Button(self)
+        btn_delete["bg"] = "#d45858"
+        ft = tkFont.Font(family='calibri bold',size=12)
+        btn_delete["font"] = ft
+        btn_delete["fg"] = "#ffffff"
+        btn_delete["justify"] = "center"
+        btn_delete["text"] = "Eliminar sala"
+        btn_delete["relief"] = "flat"
+        btn_delete.place(x=600,y=400,width=139,height=30)
+        btn_delete["command"] = self.obtener_fila
+
+    def command_update(self):
+      Set_salas(self.root)
 
 
     def obtener_fila(self, event):
@@ -54,6 +73,25 @@ class Ventana(tk.Toplevel):
             self.select_id = int(data["text"])
         else:
             self.select_id = -1
+  
+        sala = self.get_value("sala")
+
+        conexion = sqlite3.connect("cinemark.db")
+        cursor = conexion.cursor()
+        cursor.execute("SELECT * FROM SALAS NOMBRE")
+        datos = cursor.fetchall() 
+        conexion.commit()
+        conexion.close()
+        for iter in datos:
+            if iter[1] == sala:
+                lista_set = [sala]
+                conexion = sqlite3.connect("cinemark.db")
+                cursor = conexion.cursor()
+                cursor.execute("DELETE FROM SALAS WHERE NOMBRE = (?)",lista_set)
+                conexion.commit()
+                conexion.close()
+                tkMsgbox.showwarning(self.title,"Se elimino una sala!")
+        print("eliminar")
 
     def refresh(self):
       tablas = self.nametowidget("vistatabla")
@@ -61,7 +99,6 @@ class Ventana(tk.Toplevel):
         tablas.delete(iter)
       salas = Command_a.lista_sala()
       for iter in salas:
-        a=0
-        tablas.insert("",END,text=salas[0][0],values=(salas[1][1],salas[2][2]))
-        a+=1
+        print(iter[0],type(iter))
+        tablas.insert("",END,text=iter[0],values=(iter[1],iter[2],iter[3],iter[4]))
 
