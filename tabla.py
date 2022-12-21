@@ -24,7 +24,7 @@ class Ventana(tk.Toplevel):
         self.resizable(width=False, height=False)
 
         vista = ttk.Treeview(self,columns=("nombre","capacidad","pelicula","formato"),name="vistatabla")
-        vista.column("#0",width=100)
+        vista.column("#0",width=100,anchor=CENTER)
         vista.column("nombre",width=100,anchor="center")
         vista.column("capacidad",width=100,anchor="center")
         vista.column("pelicula",width=100,anchor="center")
@@ -34,23 +34,23 @@ class Ventana(tk.Toplevel):
         vista.heading("capacidad",text="Capacidad",anchor="center")
         vista.heading("pelicula",text="Pelicula",anchor="center")
         vista.heading("formato",text="Formato",anchor="center")
-        vista.bind("<<TreeviewSelect>>",self.obtener_fila)
+        vista.bind("<<TreeviewSelect>>",self.command_fila)
         vista.place(x=20,y=20,width=710,height=325)
         self.refresh()
 
-        btn_editar=tk.Button(self)
-        btn_editar["bg"] = "#d45858"
+        btn_editar= Button(self)
+        btn_editar["bg"] = "#009688"
         ft = tkFont.Font(family='calibri bold',size=12)
         btn_editar["font"] = ft
         btn_editar["fg"] = "#ffffff"
         btn_editar["justify"] = "center"
-        btn_editar["text"] = "Eliminar sala"
+        btn_editar["text"] = "Modificar sala"
         btn_editar["relief"] = "flat"
         btn_editar.place(x=440,y=400,width=139,height=30)
         btn_editar["command"] = self.command_update
 
 
-        btn_delete=tk.Button(self)
+        btn_delete=Button(self)
         btn_delete["bg"] = "#d45858"
         ft = tkFont.Font(family='calibri bold',size=12)
         btn_delete["font"] = ft
@@ -59,22 +59,26 @@ class Ventana(tk.Toplevel):
         btn_delete["text"] = "Eliminar sala"
         btn_delete["relief"] = "flat"
         btn_delete.place(x=600,y=400,width=139,height=30)
-        btn_delete["command"] = self.obtener_fila
+        btn_delete["command"] = self.command_delete
+
+    def get_value(self,name):
+        return self.nametowidget(name).get()
 
     def command_update(self):
       Set_salas(self.root)
 
 
-    def obtener_fila(self, event):
+    def command_fila(self,event):
         tablas = self.nametowidget("vistatabla")
         current_item = tablas.focus()
         if current_item:
             data = tablas.item(current_item)
-            self.select_id = int(data["text"])
+            self.select_id= int(data["text"])
         else:
             self.select_id = -1
   
-        sala = self.get_value("sala")
+    def command_delete(self):
+        sala = self.get_value("nombre")
 
         conexion = sqlite3.connect("cinemark.db")
         cursor = conexion.cursor()
@@ -92,6 +96,7 @@ class Ventana(tk.Toplevel):
                 conexion.close()
                 tkMsgbox.showwarning(self.title,"Se elimino una sala!")
         print("eliminar")
+        self.refresh()
 
     def refresh(self):
       tablas = self.nametowidget("vistatabla")

@@ -236,7 +236,7 @@ class Account(tk.Toplevel):
                     
                     else:
                         if password == password_Conf and roles_get == "Cinemark Team":
-                            answer = tkMsgbox.askokcancel(self.title(),"Si formas parte del equipo Cinemaek se te habra otorgado una clave unica para acceder a las tareas de administracion. En caso contrario no podras acceder")
+                            answer = tkMsgbox.askokcancel(self.tittle(),"Si formas parte del equipo Cinemaek se te habra otorgado una clave unica para acceder a las tareas de administracion. En caso contrario no podras acceder")
                             if answer:
                                 conexion = sqlite3.connect("cinemark.db")
                                 cursor = conexion.cursor()
